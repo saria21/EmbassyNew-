@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('consular_requests', function (Blueprint $table) {
-            $table->id();
+            $table->id('request_id'); 
+            $table->foreignId('citizen_id')->constrained('citizens', 'citizen_id')->onDelete('cascade');
+            
+            $table->string('request_type');
+            $table->string('request_status');
             $table->timestamps();
         });
     }

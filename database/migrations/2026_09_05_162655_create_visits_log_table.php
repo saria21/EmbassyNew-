@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('visits_log', function (Blueprint $table) {
             $table->id('visit_id');
             $table->integer('visitor_id');
-            $table->foreignId('staff_id')->constrained('staff', 'staff_id')->onDelete('cascade');
-            
+            $table->foreignId('staff_id')->constrained('users', 'staff_id')->onDelete('cascade');
             $table->dateTime('check_in_time');
             $table->dateTime('check_out_time')->nullable();
             $table->timestamps();
